@@ -1,5 +1,6 @@
 package com.cimb.pages;
 
+import com.cimb.config.Properties;
 import com.frameworkium.core.ui.pages.BasePage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
@@ -23,11 +24,15 @@ public class HomePage extends BasePage<HomePage> {
 
     @Name("CIMB Deals Menu Link")
     @FindBy(css = "a[href='/en/personal/cimb-deals.html']")
-    private WebElement dealsLink;
+    private WebElement dealsMenuLink;
+
+    @Name("Tools Menu Link")
+    @FindBy(css = "a[href='/en/personal/day-to-day-banking/tools.html']")
+    private WebElement toolsMenuLink;
 
     @Step("Open home page")
     public static HomePage open() {
-        return new HomePage().get("https://www.cimb.com.my/en/personal/home.html");
+        return new HomePage().get(Properties.baseURL());
     }
 
     @Step("Click Skip Now Button")
@@ -39,6 +44,6 @@ public class HomePage extends BasePage<HomePage> {
     @Step("Navigate to Deals")
     public void navigateToDeals() {
         burgerMenu.click();
-        dealsLink.click();
+        dealsMenuLink.click();
     }
 }
