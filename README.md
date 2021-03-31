@@ -10,7 +10,7 @@ Note: if environment is not specified, it will default to CIMB MY website.
 
 ## How to Run using Maven Build
 1. Run using command 
-`clean verify -Dbrowser=chrome -Denvironment=https://www.cimb.com.sg/en/personal/home.html -Dmaximise=true` 
+`clean verify -Dtags=@CIMBTest -Dbrowser=chrome -Dmaximise=true -Denvironment=https://www.cimb.com.sg/en/personal/home.html` 
 
 
 ## How to view the report
