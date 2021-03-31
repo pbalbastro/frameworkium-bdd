@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
 @CucumberOptions(
         features = {"src/test/resources/features/CimbAssessment.feature"},
 //        tags = "not @ignore and not @api",
-        tags = "@Patrick",
+        tags = "@CIMBTest",
         plugin = {
                 "pretty", // pretty console logging
                 "json:target/json/cucumber-results.json", // json results file
