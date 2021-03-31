@@ -8,6 +8,9 @@
 Ex: -Dtags=@CIMBTest -Dbrowser=chrome -Dmaximise=true -Denvironment=https://www.cimb.com.sg/en/personal/home.html
 Note: if environment is not specified, it will default to CIMB MY website.
 
+## How to Run using Maven Build
+1. Run using command `clean verify -Dbrowser=chrome -Denvironment=https://www.cimb.com.sg/en/personal/home.html -Dmaximise=true` 
+
 
 ## How to view the report
 1. In Intellij project, right-click to frameworkium-bdd > target then select Open In > Terminal.
