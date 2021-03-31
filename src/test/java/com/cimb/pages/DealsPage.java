@@ -32,6 +32,10 @@ public class DealsPage extends BasePage<DealsPage> {
     @FindBy(css = "button[class='modal-close-button']")
     private WebElement selectCountryCloseButton;
 
+    @Name("Modal Block")
+    @FindBy(css = "body")
+    private WebElement modalBlock;
+
     @Step("Click Travel & Fun Menu")
     public void clickTravelAndFunMenu() {
         travelAndFunMenu.click();
