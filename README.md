@@ -1,15 +1,8 @@
-# Frameworkium-BDD
-
-![build](https://github.com/frameworkium/frameworkium-bdd/workflows/frameworkium-bdd%20build/badge.svg)
-![release](https://img.shields.io/github/v/release/frameworkium/frameworkium-bdd)
-
-This is a Cucumber implementation of [Frameworkium][frameworkium],
-it utilises [frameworkium-core][core] with an added BDD layer,
-provided by Cucumber-JVM, to give you a BDD Automation solution.
+# CIMB Assessment
 
 ## Getting Started
 
-1. Clone this project `git clone https://github.com/Frameworkium/frameworkium-bdd.git`
+1. Clone this branch `git clone https://github.com/Frameworkium/frameworkium-bdd.git`
 2. Create your own package for your project under `src/test/java`
 3. Create a `glue` package within your project package where you will put all your step definition classes
 4. Add your glue packages to the `glue` parameter of the `@CucumberOptions`
@@ -18,29 +11,6 @@ provided by Cucumber-JVM, to give you a BDD Automation solution.
 6. Create feature files in `src/test/resources/features`
 7. Run all tests using `mvn clean verify`
 
-## Project Layout
-
-Frameworkium-BDD uses conventional Cucumber-JVM layout as shown below. The main
-package and features package path is already configured within the `pom.xml` so
-that TestNG knows where all the necessary components are when tests are run.
-
-The layout looks something like this
-
-```
-.
-├── src/
-|    ├── test/
-|        ├── java/
-|        |   └── com.your.package/
-|        |       ├── glue/
-|        |       |   └──SomeSteps.java
-|        |       └── pages/
-|        |           └──PageObject.java
-|        └── resources/
-|            ├── features/
-|            |	└── Feature_file.feature
-└── pom.xml
-```
 
 An overview of some of the important packages.
 
