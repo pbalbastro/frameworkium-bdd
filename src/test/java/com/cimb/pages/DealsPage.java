@@ -2,10 +2,13 @@ package com.cimb.pages;
 
 import com.frameworkium.core.ui.pages.BasePage;
 import io.qameta.allure.Step;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import ru.yandex.qatools.htmlelements.annotations.Name;
+
+import java.util.concurrent.TimeUnit;
 
 public class DealsPage extends BasePage<DealsPage> {
 
@@ -22,7 +25,7 @@ public class DealsPage extends BasePage<DealsPage> {
     private WebElement firstDealCard;
 
     @Name("Country Selection")
-    @FindBy(css = "body > ngb-modal-window > div > div > div.alp-cimbd-modal2.modal-body > div > button:nth-child(1)")
+    @FindBy(css = "button.col-12:nth-child(1)")
     private WebElement malaysia;
 
     @Name("Modal Close Button")
@@ -46,19 +49,33 @@ public class DealsPage extends BasePage<DealsPage> {
         return true;
     }
 
-    @Step("Select Country Malaysia")
-    public void selectCountryMalaysia(){
-        malaysia.click();
-//        countrySelect.stream()
-//                .filter(e -> e.getAttribute("innerHTML").contains("Malaysia"))
-//                .findFirst()
-//                .orElseThrow(()-> new NoSuchElementException("No matching found"))
-//                .click();
-    }
-
     @Step("Click Modal Close Button")
     public void clickCloseButton() {
+        driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
+        driver.switchTo().defaultContent();
+        driver.switchTo().frame("LOTCCFrame_1617076401983");
         wait.until(ExpectedConditions.elementToBeClickable(selectCountryCloseButton));
         selectCountryCloseButton.click();
+    }
+
+    @Name("Loading Spinner")
+    @FindBy(css = "div[id='loading-spinner-text']")
+    private WebElement spinner;
+
+    @Step("Click Modal Block")
+    public void clickModalBlock() {
+        wait.until(ExpectedConditions.invisibilityOf(spinner));
+        modalBlock.sendKeys(Keys.ESCAPE);
+    }
+
+    @Name("Modal block - MY")
+    @FindBy(css = "ngb-modal-window[class='modal fade show d-block']")
+    private WebElement modalMy;
+
+    @Step("Click Overlay Close Button - MY")
+    public void closeModalMy() {
+        wait.until(ExpectedConditions.visibilityOf(modalMy));
+        modalMy.sendKeys(Keys.ESCAPE);
+//        overlayCloseButton.click();
     }
 }

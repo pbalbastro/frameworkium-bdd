@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 
 @Listeners({CaptureListener.class, ScreenshotListener.class})
 @CucumberOptions(
-        features = {"src/test/resources/features/Deals.feature"},
+        features = {"src/test/resources/features/CimbAssessment.feature"},
 //        tags = "not @ignore and not @api",
         tags = "@Patrick",
         plugin = {
