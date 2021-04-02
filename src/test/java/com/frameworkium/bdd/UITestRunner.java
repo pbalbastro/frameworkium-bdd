@@ -13,9 +13,9 @@ import java.lang.reflect.Method;
 
 @Listeners({CaptureListener.class, ScreenshotListener.class})
 @CucumberOptions(
-        features = {"src/test/resources/features/CimbAssessment.feature"},
+        features = {"src/test/resources/features/"},
 //        tags = "not @ignore and not @api",
-        tags = "@CIMBTest",
+        tags = "@MoneyLion",
         plugin = {
                 "pretty", // pretty console logging
                 "json:target/json/cucumber-results.json", // json results file
@@ -23,7 +23,7 @@ import java.lang.reflect.Method;
                 "io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm"
         },
         // NB: change these to match your glue packages.
-        glue = {"com.google.glue", "org.seleniumhq.glue", "com.cimb.glue"})
+        glue = {"com.google.glue", "org.seleniumhq.glue", "com.cimb.glue", "com.moneylion.glue"})
 public class UITestRunner extends AbstractTestNGCucumberTests {
     private static final Logger logger = LogManager.getLogger();
 
