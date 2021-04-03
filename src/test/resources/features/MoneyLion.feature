@@ -15,8 +15,8 @@ Feature: MoneyLion Assessment
     When I hover on “Products” and click on “Automated Investing” at the top of the webpage
     And I scroll to view the personalised portfolio
     Then there should be total of 7 portfolio available on the slider
-    When I select "first" portfolio on the slider
-    Then I should able to see the "Steady Income Portfolio" displayed
+    When I select "sixth" portfolio on the slider
+    Then I should able to see the "Aggressive Portfolio" displayed
 
 #  Scenario 3: Able to verify grade for Credit Utilization
 #    Given I am a new customer

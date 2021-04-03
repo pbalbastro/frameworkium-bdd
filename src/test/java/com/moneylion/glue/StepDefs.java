@@ -50,8 +50,7 @@ public class StepDefs {
     }
 
     @And("I scroll to view the personalised portfolio")
-    public void i_scroll_to_view_the_personalised_portfolio() {
-
+    public void i_scroll_to_view_the_personalised_portfolio() throws InterruptedException {
         new InvestingPage().get().scrollToPortolioSection();
     }
 
@@ -64,8 +63,8 @@ public class StepDefs {
     }
 
     @When("^I select \"([^\"]*)\" portfolio on the slider$")
-    public void i_select_something_portfolio_on_the_slider(String option) throws InterruptedException {
-        new InvestingPage().get().selectSliderOption(option); //TODO: fix slider error
+    public void i_select_something_portfolio_on_the_slider(String option) {
+        new InvestingPage().get().selectSliderOption(option);
     }
 
     @Then("^I should able to see the \"([^\"]*)\" displayed$")

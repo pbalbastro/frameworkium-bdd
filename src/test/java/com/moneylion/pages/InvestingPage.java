@@ -10,43 +10,15 @@ import org.openqa.selenium.support.FindBy;
 import ru.yandex.qatools.htmlelements.annotations.Name;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class InvestingPage extends BasePage<InvestingPage> {
 
     JavascriptExecutor jse = (JavascriptExecutor)driver;
+    Actions action = new Actions(driver);
 
     @Name("Portfolio Slider Dots")
     @FindBy(css = "span[class*='slider-step']")
     private List<WebElement> portfolioSliderDot;
-
-    @Name("Portfolio Slider Option 1")
-    @FindBy(css = "span[class='slider-step-dot']")
-    private WebElement firstSliderOption;
-
-    @Name("Portfolio Slider Option 2")
-        @FindBy(css = "span[class='slider-step-dot slider-step-dot__2']")
-    private WebElement secondSliderOption;
-
-    @Name("Portfolio Slider Option 3")
-    @FindBy(css = "span[class='slider-step-dot slider-step-dot__3']")
-    private WebElement thirdSliderOption;
-
-    @Name("Portfolio Slider Option 4")
-    @FindBy(css = "span[class='slider-step-dot slider-step-dot__4']")
-    private WebElement fourthSliderOption;
-
-    @Name("Portfolio Slider Option 5")
-    @FindBy(css = "span[class='slider-step-dot slider-step-dot__5']")
-    private WebElement fifthSliderOption;
-
-    @Name("Portfolio Slider Option 6")
-    @FindBy(css = "span[class='slider-step-dot slider-step-dot__6']")
-    private WebElement sixthSliderOption;
-
-    @Name("Portfolio Slider Option 7")
-    @FindBy(css = "span[class='slider-step-dot slider-step-dot__7']")
-    private WebElement seventhSliderOption;
 
     @Name("Current Portfolio Name")
     @FindBy(css = "div.slider-bubble-human.is-active.lazyloaded div.slider-bubble-explainer-heading.lazyloaded div p")
@@ -54,13 +26,13 @@ public class InvestingPage extends BasePage<InvestingPage> {
 
     @Visible
     @Name("Slider")
-    @FindBy(css = "div[id='slider']")
+    @FindBy(css = "#slider span")
     private WebElement slider;
 
     @Step("Scroll to Portfolio Seciton")
-    public void scrollToPortolioSection() {
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    public void scrollToPortolioSection() throws InterruptedException {
         jse.executeScript("window.scrollBy(0,2000)");
+        Thread.sleep(5000);
     }
 
     @Step("Get total portfolios in the slider")
@@ -69,44 +41,30 @@ public class InvestingPage extends BasePage<InvestingPage> {
     }
 
     @Step("Select Slider Option")
-    public void selectSliderOption(String options) throws InterruptedException {
-        Actions action = new Actions(driver);
-
+    public void selectSliderOption(String options) {
         switch (options) {
             case "first":
-//                Thread.sleep(500);
-                action.dragAndDropBy(slider,-300 , 0).perform();
-//                wait.until(ExpectedConditions.visibilityOf(slider));
-//                action.dragAndDropBy(slider, 0, 0).perform();
-
-//                wait.until(ExpectedConditions.elementToBeClickable(slider));
-//                slider.click();
-//                for (int i = 0; i < 4; i++) {
-//                    action.sendKeys(Keys.ARROW_LEFT).build().perform();
-//                }
+                action.dragAndDropBy(slider, -300, 0).perform();
+                break;
             case "second":
-//                secondSliderOption.click();
-//                jse.executeScript("arguments[0].click();", secondSliderOption);
+                action.dragAndDropBy(slider, -200, 0).perform();
+                break;
             case "third":
-
+                action.dragAndDropBy(slider, -100, 0).perform();
+                break;
             case "fourth":
-
+                action.dragAndDropBy(slider, -50, 0).perform();
+                break;
             case "fifth":
-
+                action.dragAndDropBy(slider, 0, 0).perform();
+                break;
             case "sixth":
-
+                action.dragAndDropBy(slider, 50, 0).perform();
+                break;
             case "seventh":
-
-            default:
-
+                action.dragAndDropBy(slider, 100, 0).perform();
+                break;
         }
-//        if (options == "first") {
-//            Thread.sleep(5000);
-//                action.dragAndDropBy(slider,-300 , 0).perform();
-//
-//        } else if (options == "two") {
-//            System.out.println("test");
-//        }
     }
     @Step("Get Current Portfolio Name")
     public String getCurrentPortfolioName () {
