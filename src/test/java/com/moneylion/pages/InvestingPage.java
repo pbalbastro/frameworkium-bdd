@@ -29,7 +29,7 @@ public class InvestingPage extends BasePage<InvestingPage> {
     @FindBy(css = "#slider span")
     private WebElement slider;
 
-    @Step("Scroll to Portfolio Seciton")
+    @Step("Scroll to Portfolio Section")
     public void scrollToPortolioSection() throws InterruptedException {
         jse.executeScript("window.scrollBy(0,2000)");
         Thread.sleep(5000);

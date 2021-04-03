@@ -14,7 +14,7 @@ public class HomePage extends BasePage<HomePage> {
     private WebElement productsMenu;
 
     @Name("Credit Builders Loan Submenu")
-    @FindBy(css = "#menu-header-menu li:nth-child(4) li:nth-child(1) a")
+    @FindBy(css = "#menu-header-menu li:nth-child(1) li:nth-child(3) a")
     private WebElement creditBuildersLoanSubmenu;
 
     @Name("About Us Menu")

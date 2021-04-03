@@ -1,6 +1,6 @@
 Feature: MoneyLion Assessment
 
-#  @MoneyLion
+  @MoneyLion
   Scenario: Able to acess MoneyLion about page successfully
     Given I am a new customer
     And access to the MoneyLion website
@@ -18,11 +18,12 @@ Feature: MoneyLion Assessment
     When I select "sixth" portfolio on the slider
     Then I should able to see the "Aggressive Portfolio" displayed
 
-#  Scenario 3: Able to verify grade for Credit Utilization
-#    Given I am a new customer
-#    And access to the MoneyLion website
-#    When I hover on “Products” and click on “Credit Builders Loans” at the top of the webpage
-#    And I scroll to view the “Track Your Credit While You Build” section
-#    And I select “Credit Utilization”
-#    And I change the credit utilization percentage to 20%
-#    Then I should be able to see the grade is now displayed as B
+  @MoneyLion
+  Scenario: Able to verify grade for Credit Utilization
+    Given I am a new customer
+    And access to the MoneyLion website
+    When I hover on “Products” and click on “Credit Builders Loans” at the top of the webpage
+    And I scroll to view the “Track Your Credit While You Build” section
+    And I select “Credit Utilization”
+    And I change the credit utilization percentage to 20%
+    Then I should be able to see the grade is now displayed as B
