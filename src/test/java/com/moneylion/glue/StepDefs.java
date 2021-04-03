@@ -2,6 +2,7 @@ package com.moneylion.glue;
 
 import com.moneylion.pages.AboutUsPage;
 import com.moneylion.pages.HomePage;
+import com.moneylion.pages.InvestingPage;
 import io.cucumber.java.en.*;
 
 import static com.google.common.truth.Truth.assert_;
@@ -10,6 +11,7 @@ public class StepDefs {
 
     private static final String ABOUT_US_URL = "https://www.moneylion.com/about/";
     private static final String LOCATIONS_TEXT = "Offices located in New York City, San Francisco, Salt Lake City, and Kuala Lumpur.";
+    private static final long PORTFOLIO_COUNT = 7;
 
     @Given("^I am a new customer$")
     public void i_am_a_new_customer() {
@@ -41,5 +43,35 @@ public class StepDefs {
                 .that(new AboutUsPage().get().getLocationsText())
                 .isEqualTo(LOCATIONS_TEXT);
     }
+    //StepDefs2
+    @When("I hover on “Products” and click on “Automated Investing” at the top of the webpage")
+    public void i_hover_on_products_and_click_on_automated_investing_at_the_top_of_the_webpage() {
+        new HomePage().get().clickAutomatedInvestingSubmenu();
+    }
 
+    @And("I scroll to view the personalised portfolio")
+    public void i_scroll_to_view_the_personalised_portfolio() {
+
+        new InvestingPage().get().scrollToPortolioSection();
+    }
+
+    @Then("there should be total of 7 portfolio available on the slider")
+    public void there_should_be_total_of_7_portfolio_available_on_the_slider() {
+
+        assert_().withMessage("Incorrect Portfolio Count")
+                .that(new InvestingPage().get().getSliderOptionsCount())
+                .isEqualTo(PORTFOLIO_COUNT);
+    }
+
+    @When("^I select \"([^\"]*)\" portfolio on the slider$")
+    public void i_select_something_portfolio_on_the_slider(String option) throws InterruptedException {
+        new InvestingPage().get().selectSliderOption(option); //TODO: fix slider error
+    }
+
+    @Then("^I should able to see the \"([^\"]*)\" displayed$")
+    public void i_should_able_to_see_the_displayed(String portfolioName) {
+        assert_().withMessage("Correct Portfolio name is not displayed")
+                .that(new InvestingPage().get().getCurrentPortfolioName())
+                .isEqualTo(portfolioName);
+    }
 }
